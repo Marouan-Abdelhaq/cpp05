@@ -1,12 +1,12 @@
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
-Form::Form() : name("default"), sign(1), execute(1)
+AForm::AForm() : name("default"), sign(1), execute(1)
 {
     this->indicating = false;
 }
 
-Form& Form::operator=(const Form& obj)
+AForm& AForm::operator=(const AForm& obj)
 {
     if (this == &obj)
         return *this;
@@ -14,12 +14,12 @@ Form& Form::operator=(const Form& obj)
     return *this;
 }
 
-Form::Form(const Form & obj) : name(obj.name), sign(obj.sign), execute(obj.execute)
+AForm::AForm(const AForm & obj) : name(obj.name), sign(obj.sign), execute(obj.execute)
 {
     *this = obj;
 }
 
-Form::Form(const std::string& name, const int sign, const int execute) : name(name), sign(sign), execute(execute)
+AForm::AForm(const std::string& name, const int sign, const int execute) : name(name), sign(sign), execute(execute)
 {
     if (sign < 1 || execute < 1)
         throw GradeTooHighException();
@@ -28,7 +28,7 @@ Form::Form(const std::string& name, const int sign, const int execute) : name(na
     this->indicating = false;
 }
 
-std::ostream& operator<<(std::ostream& stream, const Form& obj)
+std::ostream& operator<<(std::ostream& stream, const AForm& obj)
 {
     if (obj.getIndicating() == true)
        stream << "Form " <<  obj.getName() << ", Signed" << ", grade to sign " << obj.getSign() << ", grade to execute " << obj.getExecute();
@@ -37,44 +37,44 @@ std::ostream& operator<<(std::ostream& stream, const Form& obj)
     return stream;
 }
 
-const char* Form::GradeTooHighException::what() const throw()
+const char* AForm::GradeTooHighException::what() const throw()
 {
     return "1 is highest possible grade!";
 }
 
-const char* Form::GradeTooLowException::what() const throw()
+const char* AForm::GradeTooLowException::what() const throw()
 {
     return "150 is lowest possible grade!";
 }
 
-const std::string& Form::getName() const
+const std::string& AForm::getName() const
 {
     return this->name;
 }
 
-bool Form::getIndicating() const
+bool AForm::getIndicating() const
 {
     return this->indicating;
 }
 
-int Form::getSign() const
+int AForm::getSign() const
 {
     return this->sign;
 }
 
-int Form::getExecute() const
+int AForm::getExecute() const
 {
     return this->execute;
 }
 
 
-void Form::beSigned(const Bureaucrat& obj)
+void AForm::beSigned(const Bureaucrat& obj)
 {
     if (obj.getGrade() > this->sign)
         throw GradeTooLowException();
     indicating = true;
 }
-Form::~Form()
+AForm::~AForm()
 {
 
 }

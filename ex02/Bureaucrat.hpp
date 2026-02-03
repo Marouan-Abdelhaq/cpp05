@@ -2,7 +2,7 @@
 #define BUREAUCRAT_HPP
 
 #include <iostream>
-#include "Form.hpp"
+#include "AForm.hpp"
 
 class Bureaucrat
 {
@@ -25,7 +25,7 @@ class Bureaucrat
         };
         const std::string& getName() const;
         int getGrade() const;
-        void    signForm(Form& obj);
+        void    signForm(AForm& obj);
         ~Bureaucrat();
 };
 

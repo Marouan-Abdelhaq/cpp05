@@ -40,7 +40,7 @@ void Bureaucrat::decrement()
     this->grade++;
 }
 
-const char* Bureaucrat::GradeTooHighException::what() const noexcept
+const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
     return "1 is highest possible grade!";
 }
@@ -51,7 +51,7 @@ std::ostream& operator<<(std::ostream& stream, const Bureaucrat& obj)
     return stream;
 }
 
-const char* Bureaucrat::GradeTooLowException::what() const noexcept
+const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
     return "150 is lowest possible grade!";
 }

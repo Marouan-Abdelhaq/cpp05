@@ -28,6 +28,7 @@ class AForm
         int getExecute() const;
         bool getIndicating() const;
         void beSigned(const Bureaucrat& obj);
+        virtual void execute(Bureaucrat const & executor) const = 0;
         ~AForm();
 };
 

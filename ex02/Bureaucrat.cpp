@@ -66,7 +66,7 @@ int Bureaucrat::getGrade() const
     return this->grade;
 }
 
-void Bureaucrat::signForm(Form& obj)
+void Bureaucrat::signForm(AForm& obj)
 {
     try
     {

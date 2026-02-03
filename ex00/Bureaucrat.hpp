@@ -13,11 +13,11 @@ class Bureaucrat
         Bureaucrat& operator=(const Bureaucrat& obj);
         class GradeTooHighException : public std::exception
         {
-            const char* what() const noexcept;
+            const char* what() const throw();
         };
         class GradeTooLowException : public std::exception
         {
-            const char* what() const noexcept;
+            const char* what() const throw();
         };
         const std::string& getName() const;
         int getGrade() const;
