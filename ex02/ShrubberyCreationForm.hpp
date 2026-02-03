@@ -2,6 +2,7 @@
 #define SHRUBBERYCREATIONFORM_HPP
 
 #include "AForm.hpp"
+#include <fstream>
 
 class ShrubberyCreationForm : public AForm
 {
@@ -9,39 +10,14 @@ class ShrubberyCreationForm : public AForm
     public:
             ShrubberyCreationForm();
             ShrubberyCreationForm(const ShrubberyCreationForm& obj);
+            ShrubberyCreationForm(std::string& target);
             ShrubberyCreationForm& operator=(const ShrubberyCreationForm& obj);
 
-            std::string getTarget();
+            std::string getTarget() const;
             void execute(Bureaucrat const & executor) const;
             ~ShrubberyCreationForm();
 };
 
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm()
-{
-    target = "default";
-}
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& obj) : AForm()
-{
-    *this = obj;
-}
 
-ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& obj)
-(
-    if (this == &obj)
-        return *this;
-    this->target = obj.target;
-    return *this;
-)
-
-std:string ShrubberyCreationForm::getTarget()
-{
-    return this->target;
-}
-
-void 
-
-ShrubberyCreationForm::~ShrubberyCreationForm()
-{
-
-}
+#endif

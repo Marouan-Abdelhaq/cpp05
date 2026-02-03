@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 int main()
 {
@@ -8,7 +9,7 @@ int main()
     try
     {
         Bureaucrat b1("Alice", 10);
-        AForm f1("Contract", 20, 50);
+        ShrubberyCreationForm f1("Contract");
 
         std::cout << b1 << std::endl;
         std::cout << f1 << std::endl;
