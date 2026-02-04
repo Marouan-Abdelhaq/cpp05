@@ -74,6 +74,15 @@ void AForm::beSigned(const Bureaucrat& obj)
         throw GradeTooLowException();
     indicating = true;
 }
+
+void AForm::executee(Bureaucrat const & executor) const
+{
+    if (this->getIndicating() == false)
+        throw GradeTooLowException();
+    if (executor.getGrade() > this->getExecute())
+        throw GradeTooLowException();
+    this->executeFormAction();
+}
 AForm::~AForm()
 {
 

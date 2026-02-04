@@ -28,9 +28,13 @@ std::string RobotomyRequestForm::getTarget() const
     return this->target;
 }
 
-void RobotomyRequestForm::execute(Bureaucrat const & executor) const
+void RobotomyRequestForm::executeFormAction() const
 {
-    
+    srand(time(0));
+    if (rand() % 2)
+        std::cout << this->target << " has been robotomized successfully!" << std::endl;
+    else
+        std::cout << "The robotomy failed on " << this->target << "!" << std::endl;
 }
 
 RobotomyRequestForm::~RobotomyRequestForm()

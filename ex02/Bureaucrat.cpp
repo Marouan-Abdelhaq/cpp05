@@ -1,5 +1,6 @@
 #include "Bureaucrat.hpp"
-#include "AForm.hpp"
+
+class AForm;
 
 Bureaucrat::Bureaucrat() : name("default")
 {
@@ -85,7 +86,7 @@ void Bureaucrat::executeForm(AForm const & form) const
 {
     try
     {
-        form.execute(*this);
+        form.executee(*this);
         std::cout << this->getName() << " executed " << form.getName() << std::endl;
     }
     catch(const std::exception& e)
