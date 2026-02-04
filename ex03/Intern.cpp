@@ -1,15 +1,40 @@
 #include "Intern.hpp"
 
+Intern::Intern()
+{
+
+}
+
+Intern::Intern(const Intern& obj)
+{
+    (void)obj;
+}
+
+Intern& Intern::operator= (const Intern& obj)
+{
+    (void)obj;
+}
+
 AForm* Intern::makeForm(std::string const nom, std::string const target)
 {
-    if (nom == "Shrubbery Creation")
-        return new ShrubberyCreationForm(target);
-    if (nom == "Robotomy Request")
-        return new RobotomyRequestForm(target);
-    if (nom == "Presidential Pardon")
-        return new PresidentialPardonForm(target);
-    
-    std::cout << "Invalide form" << std:endl;
+    std::string forms[3] = {
+            "Shrubbery Creation",
+            "Robotomy Request",
+            "Presidential Pardon"
+    };
+    AForm* (AForm::*ptr[3])(std::string const nom, std::string const target) = {
+        &Intern::ShrubberyCreationForm,
+        &Intern::RobotomyRequestForm,
+        &Intern::PresidentialPardonForm
+    };
+
+    for (int i = 0; i < 3; i++)
+    {
+        if (nom == forms[i])
+            return new ptr[i](target);
+    }
+
+    std::cout << "Invalide form" << std::endl;
     return NULL;
 }
 

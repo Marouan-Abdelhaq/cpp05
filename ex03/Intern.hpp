@@ -5,8 +5,6 @@
 
 class Intern
 {
-    private:
-        /* data */
     public:
         Intern();
         Intern(const Intern& obj);
