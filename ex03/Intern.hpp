@@ -2,7 +2,10 @@
 #define INTERN_HPP
 
 #include "AForm.hpp"
-
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include <iostream>
 class Intern
 {
     public:
@@ -12,15 +15,11 @@ class Intern
         ~Intern();
 
         AForm* makeForm(std::string const nom, std::string const target);
+    private:
+        AForm* CreationShrubbery(std::string  target);
+        AForm* CreationRobotomy(std::string  target);
+        AForm* CreationPresidential(std::string  target);
 };
-
-Intern::Intern(/* args */)
-{
-}
-
-Intern::~Intern()
-{
-}
 
 
 #endif

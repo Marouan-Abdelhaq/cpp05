@@ -13,25 +13,41 @@ Intern::Intern(const Intern& obj)
 Intern& Intern::operator= (const Intern& obj)
 {
     (void)obj;
+    return *this;
+}
+
+AForm* Intern::CreationShrubbery(std::string target)
+{
+    return new ShrubberyCreationForm(target);
+}
+
+AForm* Intern::CreationRobotomy(std::string  target)
+{
+    return new RobotomyRequestForm(target);
+}
+
+AForm* Intern::CreationPresidential(std::string  target)
+{
+    return new PresidentialPardonForm(target);
 }
 
 AForm* Intern::makeForm(std::string const nom, std::string const target)
 {
     std::string forms[3] = {
-            "Shrubbery Creation",
-            "Robotomy Request",
-            "Presidential Pardon"
+            "shrubbery creation",
+            "robotomy request",
+            "presidential pardon"
     };
-    AForm* (AForm::*ptr[3])(std::string const nom, std::string const target) = {
-        &Intern::ShrubberyCreationForm,
-        &Intern::RobotomyRequestForm,
-        &Intern::PresidentialPardonForm
+    AForm* (Intern::*ptr[3]) (std::string  target) = {
+            &Intern::CreationShrubbery,
+            &Intern::CreationRobotomy,
+            &Intern::CreationPresidential
     };
 
     for (int i = 0; i < 3; i++)
     {
         if (nom == forms[i])
-            return new ptr[i](target);
+            return (this->*ptr[i])(target);
     }
 
     std::cout << "Invalide form" << std::endl;

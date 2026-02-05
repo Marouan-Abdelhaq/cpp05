@@ -2,15 +2,15 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 int main()
 {
-    std::string target = "home";
-    Bureaucrat b("Marouan", 160);
-    ShrubberyCreationForm f(target);
-    std::cout << f << std::endl;
-    b.signForm(f);
-    std::cout << f << std::endl;
-    b.executeForm(f);
+    Intern someRandomIntern;
+AForm* rrf;
+rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+std::cout << *rrf << std::endl;
     return 0;
 }
