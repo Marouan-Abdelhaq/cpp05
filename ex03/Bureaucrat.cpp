@@ -44,7 +44,7 @@ void Bureaucrat::decrement()
 
 const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
-    return "1 is highest possible grade!";
+    return "Grade too high!";
 }
 
 std::ostream& operator<<(std::ostream& stream, const Bureaucrat& obj)
@@ -55,7 +55,7 @@ std::ostream& operator<<(std::ostream& stream, const Bureaucrat& obj)
 
 const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
-    return "150 is lowest possible grade!";
+    return "Grade too low!";
 }
 
 const std::string& Bureaucrat::getName() const
@@ -73,7 +73,6 @@ void Bureaucrat::signForm(AForm& obj)
     try
     {
         obj.beSigned(*this);
-        std::cout << this->name << " signed " << obj.getName() << std::endl;
     }
     catch(const std::exception& e)
     {

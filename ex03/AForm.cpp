@@ -39,12 +39,12 @@ std::ostream& operator<<(std::ostream& stream, const AForm& obj)
 
 const char* AForm::GradeTooHighException::what() const throw()
 {
-    return "1 is highest possible grade!";
+    return "Grade too high!";
 }
 
 const char* AForm::GradeTooLowException::what() const throw()
 {
-    return "150 is lowest possible grade!";
+    return "Grade too low!";
 }
 
 const std::string& AForm::getName() const
@@ -72,7 +72,13 @@ void AForm::beSigned(const Bureaucrat& obj)
 {
     if (obj.getGrade() > this->sign)
         throw GradeTooLowException();
-    indicating = true;
+    if (indicating == false)
+    {
+        indicating = true;
+        std::cout << obj.getName() << " signed " << this->name << std::endl;
+    }
+    else
+        std::cout << obj.getName() << " Already signed." << std::endl;
 }
 
 void AForm::executee(Bureaucrat const & executor) const

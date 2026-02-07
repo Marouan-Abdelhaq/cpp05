@@ -6,10 +6,13 @@ class Bureaucrat;
 
 class AForm
 {
+    private:
         const std::string name;
         bool    indicating;
         const int    sign;
         const int    execute;
+    protected:
+        virtual void executeFormAction() const = 0;
     public:
         AForm();
         AForm(const AForm& obj);
@@ -28,7 +31,6 @@ class AForm
         int getExecute() const;
         bool getIndicating() const;
         void beSigned(const Bureaucrat& obj);
-        virtual void executeFormAction() const = 0;
         void executee(Bureaucrat const & executor) const;
         virtual ~AForm();
 };
